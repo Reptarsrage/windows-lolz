@@ -19,6 +19,9 @@ export default function App() {
             <img src={imgSrc} alt="start" />
           </button>
           {/* TODO: Add window task bar entries */}
+          <span className="App-TaskBar-Tab">
+            Counter
+          </span>
           <span className="App-TaskBar-Tray">
             {/* TODO: Add tray icons */}
             <Clock />
