@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import '98.css/dist/98.css';
 
 import './index.css';
+import './Sprites.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

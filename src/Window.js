@@ -18,7 +18,7 @@ export default function App() {
   }, []);
 
   return (
-    <div style={{ width: 300 }} className="window Window">
+    <div style={{ width: 300, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} className="window Window">
       <div className="title-bar">
         <div className="title-bar-text">Counter</div>
         <div className="title-bar-controls">
