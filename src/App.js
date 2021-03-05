@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+import "./App.css";
+import imgSrc from "./img/start-button.png";
+import Clock from "./Clock";
+import Window from "./Window";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <main className="App-Desktop">
+        {/* TODO: Add desktop shortcuts */}
+        {/* TODO: Add support for multiple windows */}
+        <Window />
+      </main>
+      <footer>
+        <nav className="App-TaskBar">
+          <button>
+            <img src={imgSrc} alt="start" />
+          </button>
+          {/* TODO: Add window task bar entries */}
+          <span className="App-TaskBar-Tray">
+            {/* TODO: Add tray icons */}
+            <Clock />
+          </span>
+        </nav>
+      </footer>
+    </>
   );
 }
-
-export default App;
