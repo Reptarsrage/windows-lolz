@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 
 import "./App.css";
 import imgSrc from "./img/start-button.png";
 import Clock from "./Clock";
 import Window from "./Window";
 import Shortcut from "./Shortcut";
+import StartMenu from "./StartMenu";
 
 export default function App() {
+  const [startMenuOpen, setStartMenuOpen] = useState(false);
+
+  const handleStartClick = useCallback((event) => {
+    // this can behave strangely with the StartMenu's mousedown detection
+    // so we just make sure that this is the only handler
+    event.preventDefault();
+    event.stopPropagation();
+    setStartMenuOpen(prevVal => !prevVal);
+  }, []);
+
+  const handleStartClose = useCallback(() => {
+    setStartMenuOpen(false);
+  }, []);
+
   return (
     <>
       <main className="App-Desktop">
@@ -18,11 +33,7 @@ export default function App() {
           column={1}
         />
         <Shortcut text="Internet Explorer" icon="bg-msie1_2" column={1} />
-        <Shortcut
-          text="Network"
-          icon="bg-network_cool_two_pcs_0"
-          column={1}
-        />
+        <Shortcut text="Network" icon="bg-network_cool_two_pcs_0" column={1} />
         <Shortcut text="Recycle Bin" icon="bg-recycle_bin_empty_4" column={1} />
         <Shortcut
           text="Setup MSN Internet Assistant"
@@ -44,10 +55,13 @@ export default function App() {
 
         {/* TODO: Add support for multiple windows */}
         <Window />
+
+        <StartMenu in={startMenuOpen} onClose={handleStartClose} />
       </main>
+
       <footer>
         <nav className="App-TaskBar">
-          <button>
+          <button type="button" onMouseDown={handleStartClick}>
             <img src={imgSrc} alt="start" />
           </button>
           {/* TODO: Add window task bar entries */}

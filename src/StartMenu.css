@@ -1,0 +1,61 @@
+.StartMenu {
+  position: absolute;
+  bottom: -2px;
+  left: 2px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  align-items: stretch;
+}
+
+.StartMenu-Logo {
+  background: rgb(0, 0, 168);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 168, 1) 50%,
+    rgba(0, 0, 255, 1) 90%,
+    rgba(0, 0, 216, 1) 100%
+  );
+  color: #fff;
+  writing-mode: vertical-lr;
+  text-orientation: sideways;
+  transform: rotate(180deg);
+  padding: 6px 0;
+  font-size: 24px;
+  font-family: 'sans-serif';
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+.StartMenu-Logo b {
+  margin-bottom: 2px;
+}
+
+.StartMenu-List {
+  padding: 0;
+  margin: 0;
+}
+
+.StartMenu-Item {
+  color: #000;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  min-width: 200px;
+  padding: 3px;
+  user-select: none;
+}
+
+.StartMenu-Item:hover {
+  background: rgb(0, 0, 168);
+  color: #fff;
+}
+
+.StartMenu-Item-Icon {
+  margin-right: 6px;
+}
+
+.StartMenu-Item-Expand {
+  margin-left: auto;
+}

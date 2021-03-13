@@ -1,0 +1,17 @@
+.GrowAnimation-enter {
+  max-height: 0;
+}
+
+.GrowAnimation-enter-active {
+  max-height: 100vh;
+  transition: max-height 0.15s ease-out;
+}
+
+.GrowAnimation-exit {
+  max-height: 100vh;
+}
+
+.GrowAnimation-exit-active {
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+}
