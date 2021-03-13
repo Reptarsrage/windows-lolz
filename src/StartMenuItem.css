@@ -1,0 +1,23 @@
+.StartMenuItem {
+  color: #000;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  min-width: 200px;
+  padding: 3px;
+  user-select: none;
+}
+
+.StartMenuItem:hover {
+  background: rgb(0, 0, 168);
+  color: #fff;
+}
+
+.StartMenuItem-Icon {
+  margin-right: 6px;
+}
+
+.StartMenuItem-Expand {
+  margin-left: auto;
+}

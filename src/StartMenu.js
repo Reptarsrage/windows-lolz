@@ -2,15 +2,128 @@ import React, { useCallback, useEffect, useRef } from "react";
 
 import "./StartMenu.css";
 import GrowAnimation from "./GrowAnimation";
+import StartMenuItem from "./StartMenuItem";
 
 export default function StartMenu({ in: inProp, onClose }) {
   const startMenuRef = useRef(null);
+  const items = [
+    {
+      id: "update",
+      icon: "bg-windows_update_large_1",
+      text: "Windows Update",
+      hasSubMenu: false,
+    },
+    {
+      id: "separator-1",
+      isSeparator: true,
+    },
+    {
+      id: "programs",
+      icon: "bg-appwiz_file_0",
+      text: (
+        <>
+          <u>P</u>rograms
+        </>
+      ),
+      hasSubMenu: true,
+    },
+    {
+      id: "favorites",
+      icon: "bg-directory_favorites_0",
+      text: (
+        <>
+          F<u>a</u>vorites
+        </>
+      ),
+      hasSubMenu: true,
+    },
+    {
+      id: "documents",
+      icon: "bg-directory_open_file_mydocs_0",
+      text: (
+        <>
+          <u>D</u>ocuments
+        </>
+      ),
+      hasSubMenu: true,
+    },
+    {
+      id: "settings",
+      icon: "bg-settings_gear_0",
+      text: (
+        <>
+          <u>S</u>ettings
+        </>
+      ),
+      hasSubMenu: true,
+    },
+    {
+      id: "find",
+      icon: "bg-search_file_2_0",
+      text: (
+        <>
+          <u>F</u>ind
+        </>
+      ),
+      hasSubMenu: true,
+    },
+    {
+      id: "help",
+      icon: "bg-help_book_small_0",
+      text: (
+        <>
+          <u>H</u>elp
+        </>
+      ),
+      hasSubMenu: false,
+    },
+    {
+      id: "run",
+      icon: "bg-application_hourglass_small_0",
+      text: (
+        <>
+          <u>R</u>un...
+        </>
+      ),
+      hasSubMenu: false,
+    },
+    {
+      id: "separator-2",
+      isSeparator: true,
+    },
+    {
+      id: "log off",
+      icon: "bg-key_win_0",
+      text: (
+        <>
+          <u>L</u>og Off...
+        </>
+      ),
+      hasSubMenu: false,
+    },
+    {
+      id: "shut down",
+      icon: "bg-shut_down_normal_0",
+      text: (
+        <>
+          Sh<u>u</u>t Down...
+        </>
+      ),
+      hasSubMenu: false,
+    },
+  ];
 
-  const handleClickOutside = useCallback((event) => {
-    if (startMenuRef.current && !startMenuRef.current.contains(event.target)) {
-      onClose();
-    }
-  }, [onClose]);
+  const handleClickOutside = useCallback(
+    (event) => {
+      if (
+        startMenuRef.current &&
+        !startMenuRef.current.contains(event.target)
+      ) {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -27,82 +140,18 @@ export default function StartMenu({ in: inProp, onClose }) {
           <b>Windows</b>98
         </div>
         <ul className="StartMenu-List">
-          <li className="StartMenu-Item">
-            <span className="StartMenu-Item-Icon bg-windows_update_large_1"></span>
-            <span className="StartMenu-Item-Text">Windows Update</span>
-          </li>
-
-          <hr />
-
-          <li className="StartMenu-Item">
-            <span className="StartMenu-Item-Icon bg-appwiz_file_0"></span>
-            <span className="StartMenu-Item-Text">
-              <u>P</u>rograms
-            </span>
-            <span className="StartMenu-Item-Expand">&#9658;</span>
-          </li>
-
-          <li className="StartMenu-Item">
-            <span className="StartMenu-Item-Icon bg-directory_favorites_0"></span>
-            <span className="StartMenu-Item-Text">
-              F<u>a</u>vorites
-            </span>
-            <span className="StartMenu-Item-Expand">&#9658;</span>
-          </li>
-
-          <li className="StartMenu-Item">
-            <span className="StartMenu-Item-Icon bg-directory_open_file_mydocs_0"></span>
-            <span className="StartMenu-Item-Text">
-              <u>D</u>ocuments
-            </span>
-            <span className="StartMenu-Item-Expand">&#9658;</span>
-          </li>
-
-          <li className="StartMenu-Item">
-            <span className="StartMenu-Item-Icon bg-settings_gear_0"></span>
-            <span className="StartMenu-Item-Text">
-              <u>S</u>ettings
-            </span>
-            <span className="StartMenu-Item-Expand">&#9658;</span>
-          </li>
-
-          <li className="StartMenu-Item">
-            <span className="StartMenu-Item-Icon bg-search_file_2_0"></span>
-            <span className="StartMenu-Item-Text">
-              <u>F</u>ind
-            </span>
-            <span className="StartMenu-Item-Expand">&#9658;</span>
-          </li>
-
-          <li className="StartMenu-Item">
-            <span className="StartMenu-Item-Icon bg-help_book_small_0"></span>
-            <span className="StartMenu-Item-Text">
-              <u>H</u>elp
-            </span>
-          </li>
-
-          <li className="StartMenu-Item">
-            <span className="StartMenu-Item-Icon bg-application_hourglass_small_0"></span>
-            <span className="StartMenu-Item-Text">
-              <u>R</u>un...
-            </span>
-          </li>
-
-          <hr />
-
-          <li className="StartMenu-Item">
-            <span className="StartMenu-Item-Icon bg-key_win_0"></span>
-            <span className="StartMenu-Item-Text">
-              <u>L</u>og Off...
-            </span>
-          </li>
-
-          <li className="StartMenu-Item">
-            <span className="StartMenu-Item-Icon bg-shut_down_normal_0"></span>
-            <span className="StartMenu-Item-Text">
-              Sh<u>u</u>t Down...
-            </span>
-          </li>
+          {items.map(({ id, icon, text, hasSubMenu, isSeparator }) =>
+            isSeparator ? (
+              <hr key={id} />
+            ) : (
+              <StartMenuItem
+                key={id}
+                icon={icon}
+                text={text}
+                hasSubMenu={hasSubMenu}
+              />
+            )
+          )}
         </ul>
       </div>
     </GrowAnimation>

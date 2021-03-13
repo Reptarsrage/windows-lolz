@@ -22,7 +22,7 @@
   transform: rotate(180deg);
   padding: 6px 0;
   font-size: 24px;
-  font-family: 'sans-serif';
+  font-family: "sans-serif";
   white-space: nowrap;
   text-overflow: clip;
 }
@@ -34,28 +34,4 @@
 .StartMenu-List {
   padding: 0;
   margin: 0;
-}
-
-.StartMenu-Item {
-  color: #000;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  min-width: 200px;
-  padding: 3px;
-  user-select: none;
-}
-
-.StartMenu-Item:hover {
-  background: rgb(0, 0, 168);
-  color: #fff;
-}
-
-.StartMenu-Item-Icon {
-  margin-right: 6px;
-}
-
-.StartMenu-Item-Expand {
-  margin-left: auto;
 }
