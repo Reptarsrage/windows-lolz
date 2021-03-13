@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 
 import "./App.css";
-import imgSrc from "./img/start-button.png";
 import Clock from "./Clock";
 import Window from "./Window";
 import Shortcut from "./Shortcut";
@@ -15,7 +14,7 @@ export default function App() {
     // so we just make sure that this is the only handler
     event.preventDefault();
     event.stopPropagation();
-    setStartMenuOpen(prevVal => !prevVal);
+    setStartMenuOpen((prevVal) => !prevVal);
   }, []);
 
   const handleStartClose = useCallback(() => {
@@ -61,8 +60,9 @@ export default function App() {
 
       <footer>
         <nav className="App-TaskBar">
-          <button type="button" onMouseDown={handleStartClick}>
-            <img src={imgSrc} alt="start" />
+          <button type="button" className="App-TaskBar-StartButton"  onMouseDown={handleStartClick}>
+            <span className="bg-windows_4"></span>
+            Start
           </button>
           {/* TODO: Add window task bar entries */}
           <span className="App-TaskBar-Tab">Counter</span>

@@ -34,7 +34,6 @@
   line-height: 22px;
   border-right: 1px solid #fff;
   border-bottom: 1px solid #fff;
-  font-family: Arial;
   font-weight: 400;
   color: #000;
   padding: 0 10px;
@@ -53,8 +52,18 @@
   line-height: 22px;
   border-right: 1px solid #fff;
   border-bottom: 1px solid #fff;
-  font-family: Arial;
   font-weight: 400;
   color: #000;
   margin-left: 6px;
+}
+
+.App-TaskBar-StartButton {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.App-TaskBar-StartButton span {
+  display: inline-block;
+  margin-right: 6px;
 }
