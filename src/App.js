@@ -21,9 +21,15 @@ export default function App() {
     setStartMenuOpen(false);
   }, []);
 
+  const handleDrop = useCallback((event) => {
+    // by default, data/elements cannot be dropped in other elements
+    // to allow a drop, you must prevent the default handling of the element when dragover
+    event.preventDefault();
+  }, []);
+
   return (
     <>
-      <main className="App-Desktop">
+      <main className="App-Desktop" onDragOver={handleDrop}>
         {/* TODO: Add desktop shortcuts */}
         <Shortcut text="My Computer" icon="bg-computer_explorer_5" column={1} />
         <Shortcut
