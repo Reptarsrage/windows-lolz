@@ -1,8 +1,8 @@
-import React, { useEffect, useCallback, useState } from "react";
-import moment from 'moment'
+import React, { useEffect, useCallback, useState } from 'react';
+import moment from 'moment';
 
 export default function Clock() {
-  const [formatted, setFormatted] = useState("");
+  const [formatted, setFormatted] = useState('');
 
   const updateTime = useCallback(() => {
     setFormatted(moment().format('LT'));
@@ -11,13 +11,9 @@ export default function Clock() {
   useEffect(() => {
     const intervalId = setInterval(updateTime, 1000);
     return () => {
-      clearInterval(intervalId)
+      clearInterval(intervalId);
     };
   }, [updateTime]);
 
-  return (
-    <span>
-      {formatted}
-    </span>
-  );
+  return <span>{formatted}</span>;
 }

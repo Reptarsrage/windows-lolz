@@ -1,6 +1,6 @@
-import React, { useCallback, useState, useRef, useEffect } from "react";
+import React, { useCallback, useState, useRef, useEffect } from 'react';
 
-import "./Window.css";
+import './Window.css';
 
 export default function App() {
   const windowRef = useRef(null);
@@ -16,18 +16,8 @@ export default function App() {
     (event) => {
       const taskBarHeight = 30; // 30px height of the bottom taskbar
       const buffer = 12; // 12px of buffer so that use doesn't drag window off screen
-      setPosX(
-        Math.min(
-          window.innerWidth - buffer,
-          Math.max(buffer - width, event.pageX - shiftX)
-        )
-      );
-      setPosY(
-        Math.min(
-          window.innerHeight - taskBarHeight - buffer,
-          Math.max(0, event.pageY - shiftY)
-        )
-      ); // 30 = taskbar height
+      setPosX(Math.min(window.innerWidth - buffer, Math.max(buffer - width, event.pageX - shiftX)));
+      setPosY(Math.min(window.innerHeight - taskBarHeight - buffer, Math.max(0, event.pageY - shiftY))); // 30 = taskbar height
     },
     [shiftX, shiftY, width]
   );
@@ -38,12 +28,12 @@ export default function App() {
 
   useEffect(() => {
     if (dragging) {
-      document.addEventListener("mousemove", handleDrag);
-      document.addEventListener("mouseup", handleDragEnd);
+      document.addEventListener('mousemove', handleDrag);
+      document.addEventListener('mouseup', handleDragEnd);
 
       return () => {
-        document.removeEventListener("mousemove", handleDrag);
-        document.removeEventListener("mouseup", handleDragEnd);
+        document.removeEventListener('mousemove', handleDrag);
+        document.removeEventListener('mouseup', handleDragEnd);
       };
     }
   }, [dragging, handleDrag, handleDragEnd]);
@@ -70,11 +60,7 @@ export default function App() {
   }, []);
 
   return (
-    <div
-      style={{ width, top: posY, left: posX }}
-      className="window Window"
-      ref={windowRef}
-    >
+    <div style={{ width, top: posY, left: posX }} className="window Window" ref={windowRef}>
       <div className="title-bar" onMouseDown={handleDragStart}>
         <div className="title-bar-text">Counter</div>
         <div className="title-bar-controls">
@@ -85,8 +71,8 @@ export default function App() {
       </div>
 
       <div className="window-body">
-        <p style={{ textAlign: "center" }}>Current count: {count}</p>
-        <div className="field-row" style={{ justifyContent: "center" }}>
+        <p style={{ textAlign: 'center' }}>Current count: {count}</p>
+        <div className="field-row" style={{ justifyContent: 'center' }}>
           <button type="button" onClick={incrementCount}>
             +
           </button>

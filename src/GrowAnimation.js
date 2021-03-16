@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import CSSTransition from "react-transition-group/CSSTransition";
+import React from 'react';
+import PropTypes from 'prop-types';
+import CSSTransition from 'react-transition-group/CSSTransition';
 
-import "./GrowAnimation.css";
+import './GrowAnimation.css';
 
 export default function GrowAnimation({ children, in: inProp, ...passThroughProps }) {
   return (
