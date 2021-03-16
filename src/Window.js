@@ -1,10 +1,14 @@
-import React, { useCallback, useState, useRef, useEffect } from 'react';
+import React, { useCallback, useState, useRef, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import './Window.css';
+import { AppContext } from './appReducer';
+import clsx from 'clsx';
 
-export default function App() {
+export default function App({ windowId }) {
+  const { state } = useContext(AppContext);
+  const { title, icon, Component, passThroughProps } = state.windowById[windowId];
   const windowRef = useRef(null);
-  const [count, setCount] = useState(0);
   const [width] = useState(300);
   const [posX, setPosX] = useState(window.innerWidth / 2 - width);
   const [posY, setPosY] = useState(window.innerHeight / 2);
@@ -47,22 +51,13 @@ export default function App() {
     [posX, posY]
   );
 
-  const incrementCount = useCallback(() => {
-    setCount(count + 1);
-  }, [count]);
-
-  const decrementCount = useCallback(() => {
-    setCount(count - 1);
-  }, [count]);
-
-  const resetCount = useCallback(() => {
-    setCount(0);
-  }, []);
-
   return (
     <div style={{ width, top: posY, left: posX }} className="window Window" ref={windowRef}>
       <div className="title-bar" onMouseDown={handleDragStart}>
-        <div className="title-bar-text">Counter</div>
+        <div className="title-bar-text Window-Title">
+          <span className={clsx('Window-Title-Icon', icon)}></span>
+          {title}
+        </div>
         <div className="title-bar-controls">
           <button type="button" aria-label="Minimize" />
           <button type="button" aria-label="Maximize" />
@@ -71,19 +66,12 @@ export default function App() {
       </div>
 
       <div className="window-body">
-        <p style={{ textAlign: 'center' }}>Current count: {count}</p>
-        <div className="field-row" style={{ justifyContent: 'center' }}>
-          <button type="button" onClick={incrementCount}>
-            +
-          </button>
-          <button type="button" onClick={decrementCount}>
-            -
-          </button>
-          <button type="button" onClick={resetCount}>
-            Reset
-          </button>
-        </div>
+        <Component {...passThroughProps} />
       </div>
     </div>
   );
 }
+
+App.propTypes = {
+  windowId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};

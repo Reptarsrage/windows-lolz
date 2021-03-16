@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import './Shortcut.css';
+import { AppContext } from './appReducer';
 
-export default function Shortcut({ text, icon, column, row }) {
+export default function Shortcut({ shortcutId }) {
+  const { state } = useContext(AppContext);
+  const { text, icon, column, row } = state.desktopShortcutById[shortcutId];
+
   const style = {};
   if (column) {
     style.gridColumn = column;
@@ -20,3 +25,7 @@ export default function Shortcut({ text, icon, column, row }) {
     </div>
   );
 }
+
+Shortcut.propTypes = {
+  shortcutId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
