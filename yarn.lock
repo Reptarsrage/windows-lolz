@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"98.css@0.1.16":
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/98.css/-/98.css-0.1.16.tgz#7e1d0ccf07e6c8ce69109fbb8fa5a530adab246d"
-  integrity sha512-oRHyT905tHb0XOHa3nOjH6meDMedNwR4Jc3wYTUAykCjyFXsUGMQhxvlxuBarvLk/jmZb1Cu4YBDIXADxAt5BA==
+"98.css@0.1.18":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/98.css/-/98.css-0.1.18.tgz#8c5514edfdccb32ef9e5b10904036ba674c21df7"
+  integrity sha512-I6l22DVVGAeets2KzpWhnbj3vCmP5HrkkZFnN8MhFF0z5yoXLkMM7p5vKCN9ap+Tnb4bFe4kukcMsinpDcnfhQ==
 
 "@babel/code-frame@7.10.4":
   version "7.10.4"
