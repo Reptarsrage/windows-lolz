@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "98.css": "0.1.16",
-    "@testing-library/jest-dom": "5.11.9",
+    "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "11.2.5",
     "@testing-library/user-event": "12.8.1",
     "clsx": "1.1.1",
