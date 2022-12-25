@@ -10,7 +10,14 @@ export const AppContext = createContext();
 export const initialState = {
   allWindowIds: [1],
   windowById: {
-    1: { id: 1, title: 'Counter', icon: 'bg-directory_closed_1', Component: CounterWindow, passThroughProps: {} },
+    1: {
+      id: 1,
+      title: 'Counter',
+      icon: 'bg-directory_closed_1',
+      Component: CounterWindow,
+      passThroughProps: {},
+      isMinimized: false,
+    },
   },
   allDesktopShortcutIds: [1, 2, 3, 4, 5, 6, 7, 8],
   desktopShortcutById: {

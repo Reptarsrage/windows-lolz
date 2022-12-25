@@ -1,0 +1,25 @@
+.MinimizeAnimation-enter {
+  opacity: 0;
+}
+
+.MinimizeAnimation-enter-active {
+  opacity: 1;
+  transition: opacity 0.15s ease-out;
+}
+
+.MinimizeAnimation-enter-done {
+  opacity: 1;
+}
+
+.MinimizeAnimation-exit {
+  opacity: 1;
+}
+
+.MinimizeAnimation-exit-active {
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
+}
+
+.MinimizeAnimation-exit-done {
+  opacity: 0;
+}

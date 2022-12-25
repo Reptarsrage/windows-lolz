@@ -1,13 +1,14 @@
 import React, { useCallback, useState, useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-
-import './Window.css';
-import { AppContext } from './appReducer';
 import clsx from 'clsx';
 
-export default function App({ windowId }) {
-  const { state } = useContext(AppContext);
-  const { title, icon, Component, passThroughProps } = state.windowById[windowId];
+import './Window.css';
+import MinimizeAnimation from './MinimizeAnimation';
+import { AppContext, minimizeWindow } from './appReducer';
+
+export default function Window({ windowId }) {
+  const { state, dispatch } = useContext(AppContext);
+  const { title, icon, Component, passThroughProps, isMinimized } = state.windowById[windowId];
   const windowRef = useRef(null);
   const [width] = useState(300);
   const [posX, setPosX] = useState(window.innerWidth / 2 - width);
@@ -29,6 +30,10 @@ export default function App({ windowId }) {
   const handleDragEnd = useCallback(() => {
     setDragging(false);
   }, []);
+
+  const handleMinimizeClick = useCallback(() => {
+    dispatch(minimizeWindow(windowId));
+  }, [dispatch, windowId]);
 
   useEffect(() => {
     if (dragging) {
@@ -52,6 +57,7 @@ export default function App({ windowId }) {
   );
 
   return (
+    <MinimizeAnimation in={!isMinimized}>
     <div style={{ width, top: posY, left: posX }} className="window Window" ref={windowRef}>
       <div className="title-bar" onMouseDown={handleDragStart}>
         <div className="title-bar-text Window-Title">
@@ -59,7 +65,7 @@ export default function App({ windowId }) {
           {title}
         </div>
         <div className="title-bar-controls">
-          <button type="button" aria-label="Minimize" />
+          <button type="button" aria-label="Minimize" onClick={handleMinimizeClick} />
           <button type="button" aria-label="Maximize" />
           <button type="button" aria-label="Close" />
         </div>
@@ -69,9 +75,10 @@ export default function App({ windowId }) {
         <Component {...passThroughProps} />
       </div>
     </div>
+    </MinimizeAnimation>
   );
 }
 
-App.propTypes = {
+Window.propTypes = {
   windowId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
