@@ -3,9 +3,9 @@
 
 
 "98.css@^0.1.16":
-  version "0.1.20"
-  resolved "https://registry.yarnpkg.com/98.css/-/98.css-0.1.20.tgz#c7eb89e7f54205ed38f86b3b6a323736abc7162d"
-  integrity sha512-9oM+AZMfxG59Zz+bnAjIxAX2AKnBPkEJjf84ATto0wUNdRPxV+jhov1rHKe/wl6D0giuWwY603RxwrVVG4v2sA==
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/98.css/-/98.css-0.1.21.tgz#61e3988a58bbd44fdab3bae58c698729d52d7a5c"
+  integrity sha512-ddk5qtUWyapM0Bzd5jwGExoE5fdSEGrP+F5VbYjyZLf2c9UVmn6w2NPTvCsoD4BWdGsjdLjlkQGhWwWTJcYQJQ==
 
 "@adobe/css-tools@^4.4.0":
   version "4.4.2"
